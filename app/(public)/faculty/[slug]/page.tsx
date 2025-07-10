@@ -164,14 +164,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacultyMember } from "@/lib/data/facultyData";
 
-// ✅ Fix: define `generateStaticParams` so Next.js knows what slugs are valid
-export async function generateStaticParams() {
-  return facultyData.map((member) => ({
-    slug: member.slug,
-  }));
-}
-
-// ✅ Page component with fixed type
+// ✅ Remove the custom interface. Type inline instead.
 export default function FacultyDetailPage({
   params,
 }: {
@@ -186,7 +179,6 @@ export default function FacultyDetailPage({
   return (
     <section className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Back link */}
         <Link
           href="/faculty/all"
           className="text-blue-700 hover:underline text-sm inline-block mt-6 mb-10"
@@ -194,7 +186,6 @@ export default function FacultyDetailPage({
           ← Back to All Faculty
         </Link>
 
-        {/* Profile header */}
         <div className="flex flex-col md:flex-row items-start gap-6">
           <div className="w-40 h-40 relative rounded-full overflow-hidden shadow-md">
             <Image
@@ -238,7 +229,6 @@ export default function FacultyDetailPage({
           </div>
         </div>
 
-        {/* Bio */}
         {member.bio && (
           <div className="mt-10 space-y-4 text-gray-700 leading-relaxed text-[15px]">
             {member.bio.split("\n\n").map((p, i) => (
@@ -247,7 +237,6 @@ export default function FacultyDetailPage({
           </div>
         )}
 
-        {/* Education */}
         {member.education && member.education.length > 0 && (
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -261,7 +250,6 @@ export default function FacultyDetailPage({
           </div>
         )}
 
-        {/* Research Interests */}
         {member.researchInterests && member.researchInterests.length > 0 && (
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -275,7 +263,6 @@ export default function FacultyDetailPage({
           </div>
         )}
 
-        {/* Courses Taught */}
         {member.coursesTaught && member.coursesTaught.length > 0 && (
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -289,7 +276,6 @@ export default function FacultyDetailPage({
           </div>
         )}
 
-        {/* Social Links */}
         {member.socialLinks && (
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
