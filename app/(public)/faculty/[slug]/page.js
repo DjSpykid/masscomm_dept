@@ -162,17 +162,9 @@ import { facultyData } from "@/lib/data/facultyData";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { FacultyMember } from "@/lib/data/facultyData";
 
-// ✅ Remove the custom interface. Type inline instead.
-export default function FacultyDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const member: FacultyMember | undefined = facultyData.find(
-    (f) => f.slug === params.slug
-  );
+export default function FacultyDetailPage({ params }) {
+  const member = facultyData.find((f) => f.slug === params.slug);
 
   if (!member) return notFound();
 
