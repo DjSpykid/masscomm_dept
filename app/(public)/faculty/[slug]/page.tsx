@@ -8,7 +8,7 @@ interface FacultyPageProps {
   params: { slug: string };
 }
 
-export default function FacultyDetailPage({ params }: FacultyPageProps) {
+export default async function FacultyDetailPage({ params }: FacultyPageProps) {
   const member: FacultyMember | undefined = facultyData.find(
     (f) => f.slug === params.slug
   );
@@ -40,7 +40,9 @@ export default function FacultyDetailPage({ params }: FacultyPageProps) {
           <div>
             <h1 className="text-3xl font-bold text-gray-900">{member.name}</h1>
             <p className="text-blue-700 font-medium">{member.position}</p>
-            <p className="text-sm text-gray-700 mt-1">{member.specialization}</p>
+            <p className="text-sm text-gray-700 mt-1">
+              {member.specialization}
+            </p>
 
             {member.email && (
               <p className="text-sm text-gray-600 mt-2">
