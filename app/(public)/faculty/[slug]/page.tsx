@@ -164,8 +164,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacultyMember } from "@/lib/data/facultyData";
 
-// ✅ Fixed type — inline with what Next.js expects
-export default async function FacultyDetailPage({
+// ✅ Fix: define `generateStaticParams` so Next.js knows what slugs are valid
+export async function generateStaticParams() {
+  return facultyData.map((member) => ({
+    slug: member.slug,
+  }));
+}
+
+// ✅ Page component with fixed type
+export default function FacultyDetailPage({
   params,
 }: {
   params: { slug: string };
