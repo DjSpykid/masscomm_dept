@@ -1,5 +1,5 @@
 // lib/utils.ts
-import { clsx } from "clsx";
+import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // Merge Tailwind classes safely
